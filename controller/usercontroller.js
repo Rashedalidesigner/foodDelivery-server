@@ -1,4 +1,4 @@
-import UserModel from "../models/usermodel";
+import userModel from "../models/userModel";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"; 
 import validator from "validator";
@@ -8,7 +8,7 @@ import validator from "validator";
 const loginUser = async (req,res)=>{
     const {email,password} = req.body;
     try {
-        const user = await UserModel.findOne({email:email});
+        const user = await userModel.findOne({email:email});
 
         if(!user){
             return res.json({success:false, message:"User Not Found"})
@@ -37,7 +37,7 @@ const createToken = (id)=>{
 const registerUser = async (req,res)=>{
     const {name,email,password} = req.body;
     try {
-        const existingUser = await UserModel.findOne({email:email});
+        const existingUser = await userModel.findOne({email:email});
         if(existingUser){
             return res.status(200).json({success:false, message:"User Already Exists"})
         }
@@ -51,7 +51,7 @@ const registerUser = async (req,res)=>{
         }
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password,salt);
-        const newUser = new UserModel({
+        const newUser = new userModel({
             name:name,
             email:email,
             password:hashedPassword
