@@ -1,4 +1,14 @@
-{
+{  
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "server":"nodemon server.js"
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
