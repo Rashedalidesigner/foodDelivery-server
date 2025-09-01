@@ -27,9 +27,15 @@ app.get("/",(req,res)=>{
     res.send("API Working")
 })
 
-app.listen(port,()=>{
+try {
+    app.listen(port,()=>{
     console.log(`Server is Started on http://localhost:${port}`)
 })
+} catch (error) {
+    console.log(error)
+}
+
+
 
 
 ///mongodb+srv://rashedalidesigner:<db_password>@cluster0.acye2f9.mongodb.net/?
