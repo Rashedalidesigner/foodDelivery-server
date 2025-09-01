@@ -6,7 +6,7 @@ import multer from "multer";
 const foodRouter = express.Router();
 /// image storeage engin
 
-const storeage = multer.diskStorage({
+const storeage = multer.memoryStorage({
     destination:"uploads",
     filename:(req,file,cb)=>{
         return cb(null,`${Date.now()}${file.originalname}`)
